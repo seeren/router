@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * This file contain Seeren\Router\Matcher\MatcherInterface interface
+ *     __
+ *    / /__ __ __ __ __ __
+ *   / // // // // // // /
+ *  /_// // // // // // /
+ *    /_//_//_//_//_//_/
+ *
+ * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @link http://www.seeren.fr/ Seeren
+ * @version 1.0.1
+ */
+
+namespace Seeren\Router\Matcher;
+
+use Psr\Http\Message\ServerRequestInterface;
+use Seeren\Router\Route\RouteInterface;
+
+/**
+ * Interface for match a route
+ * 
+ * @category Seeren
+ * @package Router
+ * @subpackage Matcher
+ */
+interface MatcherInterface
+{
+
+   /**
+    * Match route
+    * 
+    * @param ServerRequestInterface $request http request
+    * @param RouteInterface $route route
+    * @return bool route match or not
+    */
+   public function match(
+       ServerRequestInterface &$request,
+       RouteInterface $route): bool;
+
+}

@@ -1,0 +1,31 @@
+{
+    "name": "seeren/router",
+    "description": "Routing",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Cyril Ichti",
+        "email": "consultant@seeren.fr",
+        "homepage" : "http://www.seeren.fr"
+      }
+    ],
+    "repositories": [
+      {
+         "type": "vcs",
+         "url": "vendor/seeren/src/controller"
+      }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "php": ">=7.0.1",
+      "psr/http-message": "~1.0",
+      "seeren/controller ": "~1.0"
+    },
+    "autoload": {
+      "psr-4": {
+		"Seeren\\Router\\": "src/",
+		"Seeren\\Router\\Test\\": "test/"
+      }
+  }
+}
