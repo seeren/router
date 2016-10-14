@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "require": {
       "php": ">=7.0.1",
-      "seeren/controller": "*"
+      "seeren/controller": "*",
       "seeren/http": "*"
     },
     "autoload": {
