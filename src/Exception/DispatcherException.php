@@ -37,7 +37,7 @@ class DispatcherException extends Exception
     */
    public function __construct(
        string $message,
-       int $code = E_NOTICE,
+       int $code = E_WARNING,
        Exception $previous = null)
    {
        parent::__construct($message, $code, $previous);

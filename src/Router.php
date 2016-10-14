@@ -38,6 +38,10 @@ class Router implements RouterInterface
         */
        $factory,
        /**
+        * @var MatcherInterface matcher
+        */
+       $matcher,
+       /**
         * @var array RouteInterface collection
         */
        $route;
@@ -108,7 +112,7 @@ class Router implements RouterInterface
     */
    public final function addGet(RouteInterface $route): RouterInterface
    {
-       return  $this->add($route->setAction("get"));
+       return $this->add($route->setAction("get"));
    }
 
    /**
@@ -119,7 +123,7 @@ class Router implements RouterInterface
     */
    public final function addDelete(RouteInterface $route): RouterInterface
    {     
-        return  $this->add($route->setAction("delete"));
+        return $this->add($route->setAction("delete"));
    }
     
    /**
@@ -130,7 +134,7 @@ class Router implements RouterInterface
     */
    public final function addPost(RouteInterface $route): RouterInterface
    {
-        return  $this->add($route->setAction("post"));
+        return $this->add($route->setAction("post"));
    }
     
    /**
@@ -141,7 +145,7 @@ class Router implements RouterInterface
     */
    public final function addPut(RouteInterface $route): RouterInterface
    {
-        return  $this->add($route->setAction("put"));
+        return $this->add($route->setAction("put"));
    }
 
    /**
@@ -152,9 +156,9 @@ class Router implements RouterInterface
     * 
     * @throws RouterException on failure
     */
-   public function match(ServerRequestInterface &$request): RouteInterface
+   public final function match(ServerRequestInterface &$request): RouteInterface
    {
-       foreach ($this->route as &$value) {
+       foreach ($this->route as $value) {
            if ($this->matcher->match($request, $value)) {
                return $value;
            }
@@ -177,9 +181,9 @@ class Router implements RouterInterface
                throw new InvalidArgumentException(
                    "Can't set JSON : invalid " . $fileName);
            }
-           foreach ($config as $key => &$value) {
+           foreach ($config as $key => $value) {
                $param = [];
-               foreach ($value->param as $subKey => &$subValue) {
+               foreach ($value->param as $subKey => $subValue) {
                    $param[$subKey] = $subValue;
                }
                $this->add($this->create(

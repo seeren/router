@@ -209,13 +209,11 @@ class Route implements RouteInterface
     */
    public function setPath(string $path): RouteInterface
    {
-       if (!preg_match(
-           "/^([\w-_\.\/{}])+$/",
-           $path)) {
+       if (!preg_match("/^([\w-_\.\/{}=&\?])+$/", $path)) {
            throw new InvalidArgumentException(
                "Can't set path: invalid UriInterface path " . $path);
        }
-       $this->path = "/" . ltrim($path, "/");  
+       $this->path = $path;  
        return $this; 
     }
 
@@ -227,9 +225,9 @@ class Route implements RouteInterface
    public function __toString(): string
    {
        return str_replace(
-               "/",
-               "\\",
-               $this->prefix
+              "/",
+              "\\",
+              $this->prefix
             . "\\"
             . ucfirst(self::ATTR_CONTROLLER)
             . "\\"

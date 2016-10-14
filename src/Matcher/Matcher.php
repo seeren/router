@@ -63,14 +63,16 @@ class Matcher implements MatcherInterface
     * @param RouteInterface $route route
     * @return bool route attributs match or not
     */
-   private function matchAttributs(
+   private final function matchAttributs(
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
-       if (($route->getAction() !== strtolower($request->getMethod())
-        && !isset($request->getQueryParams()[$route::ATTR_ACTION])
+       if (($route->getAction()
+       !== strtolower($request->getMethod())
+        && !(isset($request->getQueryParams()[$route::ATTR_ACTION])
         && $route->getAction()
-       !== $request->getQueryParams()[$route::ATTR_ACTION])
+       === $request->getQueryParams()[$route::ATTR_ACTION]))
+        || !isset($request->getQueryParams()[$route::ATTR_PREFIX])
         || !isset($request->getQueryParams()[$route::ATTR_PREFIX])
         || !isset($request->getQueryParams()[$route::ATTR_CONTROLLER])
         || $request->getQueryParams()[$route::ATTR_PREFIX]
@@ -79,16 +81,15 @@ class Matcher implements MatcherInterface
        !== strtolower($route->getController())) {
             return false;
        }
-       $request = $request
-                  ->withAttribute(
-                      $route::ATTR_ACTION,
-                      $route->getAction())
-                  ->withAttribute(
-                      $route::ATTR_PREFIX,
-                      $route->getPrefix())
-                  ->withAttribute(
-                      $route::ATTR_CONTROLLER,
-                      $route->getController());
+       $request = $request->withAttribute(
+                              $route::ATTR_ACTION,
+                              $route->getAction())
+                          ->withAttribute(
+                              $route::ATTR_PREFIX,
+                              $route->getPrefix())
+                          ->withAttribute(
+                              $route::ATTR_CONTROLLER,
+                              $route->getController());
         return true;
    }
 
@@ -99,7 +100,7 @@ class Matcher implements MatcherInterface
     * @param RouteInterface $route route 
     * @return bool route param match or not
     */
-   private function matchParam(
+   private final function matchParam(
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
@@ -110,8 +111,9 @@ class Matcher implements MatcherInterface
                 $request->getQueryParams()[$key])) {
                return false;
            }
-           $request = $request
-                      ->withAttribute($key, $request->getQueryParams()[$key]);
+           $request = $request->withAttribute(
+                            $key,
+                            $request->getQueryParams()[$key]);
        }
        $request = $request->withAttribute(
            $route::ATTR_PARAM,
@@ -126,12 +128,12 @@ class Matcher implements MatcherInterface
     * @param RouteInterface $route route
     * @return bool route param match or not
     */
-   private function matchPath(
+   private final function matchPath(
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
        $path = $route->getPath();
-       foreach ($route->getParam() as $key => &$value) {
+       foreach ($route->getParam() as $key => $value) {
            $path = str_replace(
                    "{" . $key . "}",
                    $request->getQueryParams()[$key],

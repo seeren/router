@@ -67,8 +67,6 @@ interface RouteInterface
     *
     * @param string $action action
     * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException for invalid action
     */
    public function setAction(string $action): RouteInterface;
 

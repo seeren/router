@@ -1,6 +1,6 @@
 {
     "name": "seeren/router",
-    "description": "Routing",
+    "description": "Router matching with psr-7",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,17 +10,11 @@
         "homepage" : "http://www.seeren.fr"
       }
     ],
-    "repositories": [
-      {
-         "type": "vcs",
-         "url": "vendor/seeren/src/controller"
-      }
-    ],
     "minimum-stability": "dev",
     "require": {
       "php": ">=7.0.1",
-      "psr/http-message": "~1.0",
       "seeren/controller": "*"
+      "seeren/http": "*"
     },
     "autoload": {
       "psr-4": {

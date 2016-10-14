@@ -60,7 +60,7 @@ class Dispatcher implements DispatcherInterface
     * @throws RouterException no route match
     * @throws DispatcherException dispatching error
     */
-   public function dispatch(
+   public final function dispatch(
        ContainerInterface $container,
        RouterInterface $router): ControllerInterface
    {

@@ -66,12 +66,12 @@ class RouteFactory implements RouteFactoryInterface
    {
        try {
            return $this->proto
-           ->clone()
-           ->setAction($action)
-           ->setPrefix($prefix)
-           ->setController($controller)
-           ->setParam($param)
-           ->setPath($path);
+                       ->clone()
+                       ->setAction($action)
+                       ->setPrefix($prefix)
+                       ->setController($controller)
+                       ->setParam($param)
+                       ->setPath($path);
        } catch (InvalidArgumentException $e) {
            throw new InvalidArgumentException(
                "Can't create route: " . $e->getMessage());
