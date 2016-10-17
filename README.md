@@ -4,7 +4,7 @@ Router matching with psr-7 and psr-11.
 
 #### Code Example
 
-Create routes, Manage them and find one matching with a server request. Use matching route for create http controllers using psr-11 as resolver.
+Create routes, Manage them and find the one matching with a server request. Use matching route for create http controllers using psr-11 as resolver.
 
 ### Seeren\Router\Router
 
@@ -18,7 +18,9 @@ $router->addGet($route)
        ->addPut($route)
        ->addDelete($route);
 ```
+
 A matching route for a server request can be find using match. Server request attributes are populated by matching params, path and action.
+
 ```php
 try {
     $route = $router->match($request);
@@ -42,7 +44,3 @@ Running tests with phpunit in the test folder.
 $ phpunit test/RouterTest.php
 $ phpunit test/Route/RouteTest.php
 ```
-
-#### License
-
-[MIT](https://github.com/Seeren/Seeren/blob/master/LICENSE)
