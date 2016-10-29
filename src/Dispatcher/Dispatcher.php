@@ -57,7 +57,7 @@ class Dispatcher implements DispatcherInterface
     * @param RouterInterface $router route handler
     * @return ControllerInterface controller
     * 
-    * @throws RouterException no route match
+    * @throws RouterException no route matching
     * @throws DispatcherException dispatching error
     */
    public final function dispatch(
