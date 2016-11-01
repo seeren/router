@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Router\Route;
@@ -59,8 +59,8 @@ class Route implements RouteInterface
        $this->action = "";
        $this->prefix = "";
        $this->controller = "";
-       $this->param = [];
        $this->path = "";
+       $this->param = [];
    }
 
    /**
@@ -92,7 +92,7 @@ class Route implements RouteInterface
     */
    public function setAction(string $action): RouteInterface
    {
-       $this->action = strtolower($action);
+       $this->action = $action;
        return $this;
    }
 
@@ -122,7 +122,7 @@ class Route implements RouteInterface
             throw new InvalidArgumentException(
                 "Can't set prefix: invalid prefix " . $prefix);
         }
-        $this->prefix = trim($prefix, "/");
+        $this->prefix = $prefix;
         return $this;
     }
 
@@ -146,7 +146,6 @@ class Route implements RouteInterface
     */
    public function setController(string $controller): RouteInterface
    {
-       $relativeClass = trim($controller, "/");
        if (!preg_match(
            "/^([A-Z]{1}[a-zA-Z_0-9]{1,31}(\/{1})?){1,3}$/",
            $controller)) {
@@ -154,7 +153,7 @@ class Route implements RouteInterface
                "Can't set controller: invalid relative class name "
              . $controller);
        }
-       $this->controller = $relativeClass;
+       $this->controller = $controller;
        return $this;
    }
 
@@ -173,19 +172,10 @@ class Route implements RouteInterface
     *
     * @param array $param param
     * @return string param
-    * 
-    * @throws InvalidArgumentException for invalid param
     */
    public function setParam(array $param): RouteInterface
    {
-       $this->param = [];
-       foreach ($param as $key => &$value) {
-           if (!is_string($key) || !is_string($value)) {
-           throw new InvalidArgumentException(
-               "Can't set param: require string value");
-           }
-           $this->param[$key] = $value;
-       }
+       $this->param = $param;
        return $this;
    }
 
@@ -224,14 +214,9 @@ class Route implements RouteInterface
     */
    public function __toString(): string
    {
-       return str_replace(
-              "/",
-              "\\",
-              $this->prefix
-            . "\\"
-            . ucfirst(self::ATTR_CONTROLLER)
-            . "\\"
-            . $this->controller);
+       return str_replace("/", "\\", $this->prefix
+                                   . "\\" . ucfirst(self::ATTR_CONTROLLER)
+                                   . "\\" . $this->controller);
    }
 
 }
