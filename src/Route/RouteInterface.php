@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Router\Route;
@@ -29,23 +29,23 @@ interface RouteInterface
        /**
         * @var string attribute name
         */
-       ATTR_ACTION = "action",
+       ACTION = "action",
        /**
         * @var string attribute name
         */
-       ATTR_PREFIX = "prefix",
+       PREFIX = "prefix",
        /**
         * @var string attribute name
         */
-       ATTR_CONTROLLER = "controller",
+       CONTROLLER = "controller",
        /**
         * @var string attribute name
         */
-       ATTR_PARAM = "param",
+       PARAM = "param",
        /**
         * @var string attribute name
         */
-       ATTR_PATH = "path";
+       PATH = "path";
 
    /**
     * Get instance
@@ -116,8 +116,6 @@ interface RouteInterface
     *
     * @param array $param param
     * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException for invalid param
     */
    public function setParam(array $param): RouteInterface;
 
