@@ -10,13 +10,14 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Router\Matcher;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Seeren\Router\Route\RouteInterface;
+use Seeren\Router\Route\Route;
 
 /**
  * Class for match a route
@@ -67,30 +68,24 @@ class Matcher implements MatcherInterface
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
-       if (($route->getAction()
-       !== strtolower($request->getMethod())
-        && !(isset($request->getQueryParams()[$route::ATTR_ACTION])
-        && $route->getAction()
-       === $request->getQueryParams()[$route::ATTR_ACTION]))
-        || !isset($request->getQueryParams()[$route::ATTR_PREFIX])
-        || !isset($request->getQueryParams()[$route::ATTR_PREFIX])
-        || !isset($request->getQueryParams()[$route::ATTR_CONTROLLER])
-        || $request->getQueryParams()[$route::ATTR_PREFIX]
-       !== strtolower($route->getPrefix())
-        || $request->getQueryParams()[$route::ATTR_CONTROLLER]
-       !== strtolower($route->getController())) {
-            return false;
+       $param = $request->getQueryParams();
+       if (array_key_exists(Route::CONTROLLER, $param)
+        && $param[Route::CONTROLLER] === strtolower($route->getController())
+        && array_key_exists(Route::PREFIX, $param)
+        && $param[Route::PREFIX] === strtolower($route->getPrefix())) {
+            $actions = explode(", ", $route->getAction());
+            $action = array_key_exists(Route::ACTION, $param)
+                    ? $param[Route::ACTION]
+                    : strtolower($request->getMethod());
+            if (in_array($action, $actions)) {
+                $request = $request
+                ->withAttribute(Route::ACTION, $action)
+                ->withAttribute(Route::PREFIX,  $route->getPrefix())
+                ->withAttribute(Route::CONTROLLER, $route->getController());
+                return true;
+            }
        }
-       $request = $request->withAttribute(
-                              $route::ATTR_ACTION,
-                              $route->getAction())
-                          ->withAttribute(
-                              $route::ATTR_PREFIX,
-                              $route->getPrefix())
-                          ->withAttribute(
-                              $route::ATTR_CONTROLLER,
-                              $route->getController());
-        return true;
+       return false;
    }
 
    /**
@@ -116,7 +111,7 @@ class Matcher implements MatcherInterface
                             $request->getQueryParams()[$key]);
        }
        $request = $request->withAttribute(
-           $route::ATTR_PARAM,
+           $route::PARAM,
            $route->getParam());
        return true;
     }
@@ -142,7 +137,7 @@ class Matcher implements MatcherInterface
        if ($path !== $request->getUri()->getPath()) {
            return false;
        }
-       $request = $request->withAttribute($route::ATTR_PATH, $path);
+       $request = $request->withAttribute($route::PATH, $path);
        return true;
    }
 
