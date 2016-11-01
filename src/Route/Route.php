@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.2
+ * @version 1.0.3
  */
 
 namespace Seeren\Router\Route;
@@ -215,7 +215,7 @@ class Route implements RouteInterface
    public function __toString(): string
    {
        return str_replace("/", "\\", $this->prefix
-                                   . "\\" . ucfirst(self::ATTR_CONTROLLER)
+                                   . "\\" . ucfirst(self::CONTROLLER)
                                    . "\\" . $this->controller);
    }
 
