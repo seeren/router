@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Router\Factory;
@@ -65,13 +65,12 @@ class RouteFactory implements RouteFactoryInterface
        string $path): RouteInterface
    {
        try {
-           return $this->proto
-                       ->clone()
-                       ->setAction($action)
-                       ->setPrefix($prefix)
-                       ->setController($controller)
-                       ->setParam($param)
-                       ->setPath($path);
+           return $this->proto->clone()
+               ->setAction($action)
+               ->setPrefix($prefix)
+               ->setController($controller)
+               ->setParam($param)
+               ->setPath($path);
        } catch (InvalidArgumentException $e) {
            throw new InvalidArgumentException(
                "Can't create route: " . $e->getMessage());
