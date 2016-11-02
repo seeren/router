@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 namespace Seeren\Router\Route;
@@ -92,7 +92,7 @@ class Route implements RouteInterface
     */
    public function setAction(string $action): RouteInterface
    {
-       $this->action = $action;
+       $this->action = strtolower($action);
        return $this;
    }
 
