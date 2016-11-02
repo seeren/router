@@ -42,7 +42,6 @@ abstract class RouteInterfaceTest extends \PHPUnit_Framework_TestCase
    {
        $route = $this->getRouteInterface();
        $route->setAction("FoO");
-       var_dump($route->getAction());
        $this->assertTrue("foo" === $route->getAction());
    }
 
