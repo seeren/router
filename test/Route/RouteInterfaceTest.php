@@ -10,13 +10,12 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Seeren\Router\Test\Route;
 
 use Seeren\Router\Route\RouteInterface;
-use stdClass;
 
 /**
  * Class for test RouteInterface
@@ -43,6 +42,7 @@ abstract class RouteInterfaceTest extends \PHPUnit_Framework_TestCase
    {
        $route = $this->getRouteInterface();
        $route->setAction("FoO");
+       var_dump($route->getAction());
        $this->assertTrue("foo" === $route->getAction());
    }
 
@@ -52,7 +52,7 @@ abstract class RouteInterfaceTest extends \PHPUnit_Framework_TestCase
    public final function testSetPrefix()
    {
        $route = $this->getRouteInterface();
-       $route->setPrefix("Foo/Foo/");
+       $route->setPrefix("Foo/Foo");
        $this->assertTrue("Foo/Foo" === $route->getPrefix());
    }
 
@@ -73,7 +73,7 @@ abstract class RouteInterfaceTest extends \PHPUnit_Framework_TestCase
    public final function testSetController()
    {
        $route = $this->getRouteInterface();
-       $route->setController("Foo/Foo/");
+       $route->setController("Foo/Foo");
        $this->assertTrue("Foo/Foo" === $route->getController());
    }
 
@@ -105,29 +105,6 @@ abstract class RouteInterfaceTest extends \PHPUnit_Framework_TestCase
        $param = ["foo" => "bar", "bar" => "baz"];
        $route->setParam($param);
        $this->assertTrue($param === $route->getParam());
-   }
-
-   /**
-    * Test RouteInterface::setParam Exception
-    *
-    * @dataProvider setParamExceptionProvider
-    * @expectedException \InvalidArgumentException
-    */
-   public final function testSetParamException(array $param)
-   {
-       $this->getRouteInterface()->setParam($param);
-   }
-
-   /**
-    * setParamExceptionProvider
-    */
-   public final function setParamExceptionProvider()
-   {
-       return [
-           [["foo" => true]],   
-           [["foo" => []]],
-           [["foo" => new stdClass()]]
-       ];
    }
 
    /**
