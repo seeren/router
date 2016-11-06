@@ -137,7 +137,7 @@ class Matcher implements MatcherInterface
        if ($path !== $request->getUri()->getPath()) {
            return false;
        }
-       $request = $request->withAttribute($route::PATH, $path);
+       $request = $request->withAttribute($route::PATH, $route->getPath());
        return true;
    }
 
