@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 namespace Seeren\Router;
@@ -169,6 +169,7 @@ class Router implements RouterInterface
        }
        throw new RouterException(
            "Can't match "
+         . strtolower($request->getMethod()) . " "
          . $request->getUri()->getPath());
    }
 
