@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 namespace Seeren\Router;
@@ -183,11 +183,7 @@ class Router implements RouterInterface
     */
    public final function import(string $fileName): RouterInterface
    {
-       try {
-           if (!($config = json_decode(file_get_contents($fileName), true))) {
-               throw new InvalidArgumentException(
-                   "Can't set JSON : invalid " . $fileName);
-           }
+       if (($config = json_decode(file_get_contents($fileName), true))) {
            foreach ($config as $value) {
                $this->add($this->create(
                    $value[Route::ACTION],
@@ -196,8 +192,9 @@ class Router implements RouterInterface
                    $value[Route::PARAM],
                    $value[Route::PATH]));
            }
-       } catch (InvalidArgumentException $e) {
-           throw $e;
+       } else {
+           throw new InvalidArgumentException(
+               "Can't import : invalid " . $fileName);
        }
        return $this;
    }
