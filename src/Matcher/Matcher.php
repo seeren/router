@@ -100,19 +100,15 @@ class Matcher implements MatcherInterface
        RouteInterface $route): bool
    {
        foreach ($route->getParam() as $key => $value) {
-           if (!isset($request->getQueryParams()[$key])
-            || !preg_match(
-                "/^" . $value . "$/",
-                $request->getQueryParams()[$key])) {
+           if (!isset($request->getQueryParams()[$key]) || !preg_match(
+                    "/^" . $value . "$/",
+                    $request->getQueryParams()[$key])) {
                return false;
            }
-           $request = $request->withAttribute(
-                            $key,
-                            $request->getQueryParams()[$key]);
+           $request = $request
+           ->withAttribute($key, $request->getQueryParams()[$key]);
        }
-       $request = $request->withAttribute(
-           $route::PARAM,
-           $route->getParam());
+       $request = $request->withAttribute($route::PARAM, $route->getParam());
        return true;
     }
 
@@ -130,9 +126,9 @@ class Matcher implements MatcherInterface
        $path = $route->getPath();
        foreach ($route->getParam() as $key => $value) {
            $path = str_replace(
-                   "{" . $key . "}",
-                   $request->getQueryParams()[$key],
-                   $path);
+                       "{" . $key . "}",
+                       $request->getQueryParams()[$key],
+                       $path);
        }
        if ($path !== $request->getUri()->getPath()) {
            return false;
