@@ -29,11 +29,11 @@ interface RouteInterface
        /**
         * @var string attribute name
         */
-       ACTION = "action",
+       ACTION     = "action",
        /**
         * @var string attribute name
         */
-       PREFIX = "prefix",
+       PREFIX     = "prefix",
        /**
         * @var string attribute name
         */
@@ -41,11 +41,11 @@ interface RouteInterface
        /**
         * @var string attribute name
         */
-       PARAM = "param",
+       PARAM      = "param",
        /**
         * @var string attribute name
         */
-       PATH = "path";
+       PATH       = "path";
 
    /**
     * Get instance
