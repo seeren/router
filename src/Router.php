@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 namespace Seeren\Router;
@@ -194,7 +194,7 @@ class Router implements RouterInterface
            }
        } else {
            throw new InvalidArgumentException(
-               "Can't import : invalid " . $fileName);
+               "Can't import: invalid \"" . $fileName . "\"");
        }
        return $this;
    }
