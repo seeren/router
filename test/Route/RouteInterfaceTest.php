@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.2
+ * @version 1.0.3
  */
 
 namespace Seeren\Router\Test\Route;
@@ -25,7 +25,7 @@ use Seeren\Router\Route\RouteInterface;
  * @subpackage Test\Route
  * @abstract
  */
-abstract class RouteInterfaceTest extends \PHPUnit_Framework_TestCase
+abstract class RouteInterfaceTest extends \PHPUnit\Framework\TestCase
 {
 
    /**
