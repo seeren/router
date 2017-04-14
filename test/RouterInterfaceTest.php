@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.2
+ * @version 1.0.3
  */
 
 namespace Seeren\Router\Test;
@@ -21,7 +21,6 @@ use Seeren\Http\Uri\ServerRequestUri;
 use Seeren\Router\Route\RouteInterface;
 use Seeren\Router\RouterInterface;
 use Seeren\Router\Route\Route;
-use Seeren\Router\Exception\RouterException;
 use ReflectionClass;
 
 /**
@@ -32,7 +31,7 @@ use ReflectionClass;
  * @subpackage Route\Test
  * @abstract
  */
-abstract class RouterInterfaceTest extends \PHPUnit_Framework_TestCase
+abstract class RouterInterfaceTest extends \PHPUnit\Framework\TestCase
 {
 
    /**
