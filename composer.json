@@ -1,6 +1,7 @@
 {
     "name": "seeren/router",
     "description": "Router matching with psr-7",
+    "keywords": ["psr-7", "psr-11", "router", "dispatche"],
     "type": "library",
     "license": "MIT",
     "authors": [
