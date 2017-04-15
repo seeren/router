@@ -124,7 +124,7 @@ class Matcher implements MatcherInterface
        RouteInterface $route): bool
    {
        $path = $route->getPath();
-       foreach ($route->getParam() as $key => $value) {
+       foreach (array_keys($route->getParam()) as $key) {
            $path = str_replace(
                        "{" . $key . "}",
                        $request->getQueryParams()[$key],

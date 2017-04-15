@@ -192,11 +192,10 @@ class Router implements RouterInterface
                    $value[Route::PARAM],
                    $value[Route::PATH]));
            }
-       } else {
-           throw new InvalidArgumentException(
-               "Can't import: invalid \"" . $fileName . "\"");
+           return $this;
        }
-       return $this;
+        throw new InvalidArgumentException(
+            "Can't import: invalid \"" . $fileName . "\"");
    }
 
 }
