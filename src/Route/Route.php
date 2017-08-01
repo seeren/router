@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 namespace Seeren\Router\Route;
@@ -56,10 +56,7 @@ class Route implements RouteInterface
     */
    public function __construct()
    {
-       $this->action = "";
-       $this->prefix = "";
-       $this->controller = "";
-       $this->path = "";
+       $this->action = $this->prefix = $this->controller = $this->path = "";
        $this->param = [];
    }
 
@@ -122,7 +119,7 @@ class Route implements RouteInterface
             throw new InvalidArgumentException(
                 "Can't set prefix: invalid prefix " . $prefix);
         }
-        $this->prefix = $prefix;
+        $this->prefix = rtrim($prefix, "/");
         return $this;
     }
 
@@ -147,13 +144,13 @@ class Route implements RouteInterface
    public function setController(string $controller): RouteInterface
    {
        if (!preg_match(
-           "/^([A-Z]{1}[a-zA-Z_0-9]{1,31}(\/{1})?){1,3}$/",
-           $controller)) {
+               "/^([A-Z]{1}[a-zA-Z_0-9]{1,31}(\/{1})?){1,3}$/",
+               $controller)) {
            throw new InvalidArgumentException(
                "Can't set controller: invalid relative class name "
              . $controller);
        }
-       $this->controller = $controller;
+       $this->controller = rtrim($controller, "/");
        return $this;
    }
 
