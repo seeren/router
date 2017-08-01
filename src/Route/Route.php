@@ -196,7 +196,7 @@ class Route implements RouteInterface
     */
    public function setPath(string $path): RouteInterface
    {
-       if (!preg_match("/^([\w-_\.\/{}=&\?])+$/", $path)) {
+       if (!preg_match("/^([\w-_\.\/{}=&\?\[\]])+$/", $path)) {
            throw new InvalidArgumentException(
                "Can't set path: invalid UriInterface path " . $path);
        }
