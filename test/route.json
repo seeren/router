@@ -1,0 +1,11 @@
+{
+  "dummyRoute": {
+    "action": "get,post",
+    "prefix": "Seeren/Router/Test",
+    "controller": "DummyController",
+    "param": {
+      "path": "(4|5){1}[0-2]{1}[0-9]{1}"
+    },
+    "path": "/uri/{path}"
+  }
+}
