@@ -147,7 +147,7 @@ class Route implements RouteInterface
                "/^([A-Z]{1}[a-zA-Z_0-9]{1,31}(\/{1})?){1,3}$/",
                $controller)) {
            throw new InvalidArgumentException(
-               "Can't set controller: invalid relative class name "
+               "Can't set controller: invalid relative controller class name "
              . $controller);
        }
        $this->controller = rtrim($controller, "/");
@@ -196,11 +196,12 @@ class Route implements RouteInterface
     */
    public function setPath(string $path): RouteInterface
    {
-       if (!preg_match("/^([\w-_\.\/{}=&\?\[\]])+$/", $path)) {
+       if (!preg_match("/^([\w-\.\/{}=&\?\[\]])+$/", $path)) {
            throw new InvalidArgumentException(
                "Can't set path: invalid UriInterface path " . $path);
        }
-       $this->path = $path;  
+
+       $this->path = ltrim($path, "/");
        return $this; 
     }
 
@@ -211,9 +212,13 @@ class Route implements RouteInterface
     */
    public function __toString(): string
    {
-       return str_replace("/", "\\", $this->prefix
-                                   . "\\" . ucfirst(self::CONTROLLER)
-                                   . "\\" . $this->controller);
+       return str_replace(
+           "/",
+           "\\",
+           $this->prefix
+         . "\\"
+         . ucfirst(self::CONTROLLER)
+         . "\\" . $this->controller);
    }
 
 }
