@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.1
+ * @version 2.0.1
  */
 
 namespace Seeren\Router;
@@ -36,37 +36,6 @@ interface RouterInterface extends RouteFactoryInterface
      */
     public function add(RouteInterface $route): RouterInterface;
 
-   /**
-    * Add route for get action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public function addGet(RouteInterface $route): RouterInterface;
-
-   /**
-    * Add route for delete action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public function addDelete(RouteInterface $route): RouterInterface;
-
-   /**
-    * Add route for post action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public function addPost(RouteInterface $route): RouterInterface;
-
-   /**
-    * Add route for put action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public function addPut(RouteInterface $route): RouterInterface;
 
    /**
     * Match route
