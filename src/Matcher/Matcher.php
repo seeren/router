@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.2
+ * @version 2.0.1
  */
 
 namespace Seeren\Router\Matcher;
@@ -49,92 +49,63 @@ class Matcher implements MatcherInterface
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
-       if ($this->matchAttributs($request, $route)
-        && $this->matchParam($request, $route)
-        && $this->matchPath($request, $route)) {
-           return true;
-       }
-       return false;
+        if ($this->matchAction($request, $route)
+         && $this->matchPath($request, $route)) {
+            $request = $request->withAttribute("route", $route);
+            return true;
+        }
+        return false;
    }
 
-   /**
-    * Match route attributs
-    *
-    * @param ServerRequestInterface $request request
-    * @param RouteInterface $route route
-    * @return bool route attributs match or not
-    */
-   private final function matchAttributs(
+  /**
+   * Match action
+   *
+   * @param ServerRequestInterface $request request
+   * @param RouteInterface $route route
+   * @return bool route action match or not
+   */
+   private function matchAction(
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
-       $param = $request->getQueryParams();
-       if (array_key_exists(Route::CONTROLLER, $param)
-        && $param[Route::CONTROLLER] === strtolower($route->getController())
-        && array_key_exists(Route::PREFIX, $param)
-        && $param[Route::PREFIX] === strtolower($route->getPrefix())) {
-            $actions = explode(", ", $route->getAction());
-            $action = array_key_exists(Route::ACTION, $param)
-                    ? $param[Route::ACTION]
-                    : strtolower($request->getMethod());
-            if (in_array($action, $actions)) {
-                $request = $request
-                ->withAttribute(Route::ACTION, $action)
-                ->withAttribute(Route::PREFIX,  $route->getPrefix())
-                ->withAttribute(Route::CONTROLLER, $route->getController());
-                return true;
-            }
-       }
-       return false;
+       $requestParam = $request->getQueryParams();
+       return in_array(
+           (array_key_exists(Route::ACTION, $requestParam)
+          ? $requestParam[Route::ACTION]
+          : strtolower($request->getMethod())),
+           explode(",", $route->getAction()));
    }
 
    /**
-    * Match route param
-    * 
-    * @param ServerRequestInterface $request request
-    * @param RouteInterface $route route 
-    * @return bool route param match or not
-    */
-   private final function matchParam(
-       ServerRequestInterface &$request,
-       RouteInterface $route): bool
-   {
-       foreach ($route->getParam() as $key => $value) {
-           if (!isset($request->getQueryParams()[$key]) || !preg_match(
-                    "/^" . $value . "$/",
-                    $request->getQueryParams()[$key])) {
-               return false;
-           }
-           $request = $request
-           ->withAttribute($key, $request->getQueryParams()[$key]);
-       }
-       $request = $request->withAttribute($route::PARAM, $route->getParam());
-       return true;
-    }
-
-   /**
-    * Match route param
+    * Match route path
     *
     * @param ServerRequestInterface $request request
     * @param RouteInterface $route route
-    * @return bool route param match or not
+    * @return bool route path match or not
     */
    private final function matchPath(
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
-       $path = $route->getPath();
-       foreach (array_keys($route->getParam()) as $key) {
-           $path = str_replace(
-                       "{" . $key . "}",
-                       $request->getQueryParams()[$key],
-                       $path);
-       }
-       if ($path !== $request->getUri()->getPath()) {
-           return false;
-       }
-       $request = $request->withAttribute($route::PATH, $route->getPath());
-       return true;
+      $requestPath = explode("/", $request->getUri()->getPath());
+      $routePath = explode("/", $route->getPath());
+      if (count($routePath) !== count($requestPath)) {
+        return false;
+      }
+      foreach ($routePath as $key => $path) {
+           if ($path === $requestPath[$key]) {
+               continue;
+           } 
+           $param = ltrim(rtrim($path, "}"), "{");
+            if (!array_key_exists($param, $route->getParam())
+             || !preg_match(
+                     "/^" . $route->getParam()[$param] . "$/",
+                     $requestPath[$key]) ) {
+                return false;
+            }
+            $request = $request->withAttribute($param, $requestPath[$key]);
+      }
+      return true;
    }
 
 }
