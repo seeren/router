@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501946289">
-  <project timestamp="1501946289">
+<coverage generated="1501947280">
+  <project timestamp="1501947280">
     <package name="Seeren\Router\Dispatcher">
       <file name="C:\xampp\htdocs\seeren-dev-master\router\src/Dispatcher/Dispatcher.php">
         <class name="Dispatcher" namespace="Seeren\Router\Dispatcher" fullPackage="Router.Dispatcher" category="Seeren" package="Router" subpackage="Dispatcher">
