@@ -10,7 +10,7 @@
  *
  * @copyright (c) Cyril Ichti <consultant@seeren.fr>
  * @link http://www.seeren.fr/ Seeren
- * @version 1.0.6
+ * @version 1.0.7
  */
 
 namespace Seeren\Router;
@@ -109,50 +109,6 @@ class Router implements RouterInterface
    }
 
    /**
-    * Add route for get action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public final function addGet(RouteInterface $route): RouterInterface
-   {
-       return $this->add($route->setAction("get"));
-   }
-
-   /**
-    * Add route for delete action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public final function addDelete(RouteInterface $route): RouterInterface
-   {     
-        return $this->add($route->setAction("delete"));
-   }
-    
-   /**
-    * Add route for post action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public final function addPost(RouteInterface $route): RouterInterface
-   {
-        return $this->add($route->setAction("post"));
-   }
-    
-   /**
-    * Add route for put action
-    * 
-    * @param Route $route route
-    * @return RouterInterface router
-    */
-   public final function addPut(RouteInterface $route): RouterInterface
-   {
-        return $this->add($route->setAction("put"));
-   }
-
-   /**
     * Match route
     *
     * @param ServerRequestInterface $request http request
@@ -169,7 +125,7 @@ class Router implements RouterInterface
        }
        throw new RouterException(
            "Can't match "
-         . strtolower($request->getMethod()) . " "
+         . $request->getMethod() . " "
          . $request->getUri()->getPath());
    }
 
@@ -183,7 +139,8 @@ class Router implements RouterInterface
     */
    public final function import(string $fileName): RouterInterface
    {
-       if (($config = json_decode(file_get_contents($fileName), true))) {
+       if (file_exists($fileName)) {
+           $config = json_decode(file_get_contents($fileName), true);
            foreach ($config as $value) {
                $this->add($this->create(
                    $value[Route::ACTION],
