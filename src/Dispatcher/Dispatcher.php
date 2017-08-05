@@ -42,7 +42,7 @@ class Dispatcher implements DispatcherInterface
    /**
     * Construct Dispatcher
     * 
-    * @param Essentiel\Http\Request\ServerRequest $request http server request
+    * @param ServerRequestInterface $request http server request
     * @return null
     */
    public function __construct(ServerRequestInterface $request)
