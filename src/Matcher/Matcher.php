@@ -89,23 +89,23 @@ class Matcher implements MatcherInterface
    {
       $requestPath = explode("/", $request->getUri()->getPath());
       $routePath = explode("/", $route->getPath());
-      if (count($routePath) !== count($requestPath)) {
-        return false;
+      if (count($routePath) === count($requestPath)) {
+          foreach ($routePath as $key => $path) {
+               if ($path === $requestPath[$key]) {
+                   continue;
+               } 
+               $param = ltrim(rtrim($path, "}"), "{");
+                if (!array_key_exists($param, $route->getParam())
+                 || !preg_match(
+                         "/^" . $route->getParam()[$param] . "$/",
+                         $requestPath[$key]) ) {
+                    return false;
+                }
+                $request = $request->withAttribute($param, $requestPath[$key]);
+          }
+          return true;
       }
-      foreach ($routePath as $key => $path) {
-           if ($path === $requestPath[$key]) {
-               continue;
-           } 
-           $param = ltrim(rtrim($path, "}"), "{");
-            if (!array_key_exists($param, $route->getParam())
-             || !preg_match(
-                     "/^" . $route->getParam()[$param] . "$/",
-                     $requestPath[$key]) ) {
-                return false;
-            }
-            $request = $request->withAttribute($param, $requestPath[$key]);
-      }
-      return true;
+      return false;
    }
 
 }

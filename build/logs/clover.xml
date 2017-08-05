@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1501947280">
-  <project timestamp="1501947280">
+<coverage generated="1501948138">
+  <project timestamp="1501948138">
     <package name="Seeren\Router\Dispatcher">
       <file name="C:\xampp\htdocs\seeren-dev-master\router\src/Dispatcher/Dispatcher.php">
         <class name="Dispatcher" namespace="Seeren\Router\Dispatcher" fullPackage="Router.Dispatcher" category="Seeren" package="Router" subpackage="Dispatcher">
@@ -72,7 +72,7 @@
     <package name="Seeren\Router\Matcher">
       <file name="C:\xampp\htdocs\seeren-dev-master\router\src/Matcher/Matcher.php">
         <class name="Matcher" namespace="Seeren\Router\Matcher" fullPackage="Router.Matcher" category="Essentiel" package="Router" subpackage="Matcher">
-          <metrics complexity="12" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="31" coveredelements="31"/>
+          <metrics complexity="12" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="32" coveredelements="32"/>
         </class>
         <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
         <line num="39" type="stmt" count="13"/>
@@ -93,19 +93,20 @@
         <line num="90" type="stmt" count="5"/>
         <line num="91" type="stmt" count="5"/>
         <line num="92" type="stmt" count="5"/>
-        <line num="93" type="stmt" count="2"/>
+        <line num="93" type="stmt" count="5"/>
+        <line num="94" type="stmt" count="5"/>
         <line num="95" type="stmt" count="5"/>
-        <line num="96" type="stmt" count="5"/>
         <line num="97" type="stmt" count="5"/>
+        <line num="98" type="stmt" count="5"/>
         <line num="99" type="stmt" count="5"/>
         <line num="100" type="stmt" count="5"/>
         <line num="101" type="stmt" count="5"/>
-        <line num="102" type="stmt" count="5"/>
-        <line num="103" type="stmt" count="5"/>
-        <line num="104" type="stmt" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="104" type="stmt" count="5"/>
         <line num="106" type="stmt" count="5"/>
-        <line num="108" type="stmt" count="5"/>
-        <metrics loc="111" ncloc="66" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="31" coveredelements="31"/>
+        <line num="108" type="stmt" count="2"/>
+        <line num="109" type="stmt" count="2"/>
+        <metrics loc="112" ncloc="67" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="28" elements="32" coveredelements="32"/>
       </file>
     </package>
     <file name="C:\xampp\htdocs\seeren-dev-master\router\src/Matcher/MatcherInterface.php">
@@ -215,6 +216,6 @@
     <file name="C:\xampp\htdocs\seeren-dev-master\router\src/RouterInterface.php">
       <metrics loc="60" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="12" loc="1089" ncloc="498" classes="7" methods="28" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="117" coveredstatements="117" elements="145" coveredelements="145"/>
+    <metrics files="12" loc="1090" ncloc="499" classes="7" methods="28" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="118" coveredstatements="118" elements="146" coveredelements="146"/>
   </project>
 </coverage>
