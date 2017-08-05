@@ -128,6 +128,7 @@ abstract class AbstractMatcherTest extends \PHPUnit\Framework\TestCase
        $route = $this->getRoute()
        ->setParam(["error" => "(4|5){1}[0-2]{1}[0-9]{1}"])
        ->setPath("uri/path/{error}");
+       $request = $request->withUri($uri->withPath("uri/path"));
        $matchingRequest = $request->withUri($uri->withPath("uri/path/404"));
        $notMatchingRequest = $request->withUri($uri->withPath("uri/path/904"));
        $class = new ReflectionClass(Matcher::class);
