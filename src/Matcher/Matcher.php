@@ -69,11 +69,14 @@ class Matcher implements MatcherInterface
        RouteInterface $route): bool
    {
        $requestParam = $request->getQueryParams();
-       return in_array(
-           (array_key_exists(Route::ACTION, $requestParam)
-          ? $requestParam[Route::ACTION]
-          : strtolower($request->getMethod())),
-           explode(",", $route->getAction()));
+       $action = array_key_exists(Route::ACTION, $requestParam)
+               ? $requestParam[Route::ACTION]
+               : strtolower($request->getMethod());
+       if (in_array($action, explode(",", $route->getAction()))) {
+           $request = $request->withAttribute(Route::ACTION, $action);
+           return true;
+       }
+       return false;
    }
 
    /**
