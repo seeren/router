@@ -39,7 +39,7 @@ A route must have an action, prefix, controller, param and path
   }
 }
 ```
-This route above provide ACME\Controller\Dummy for a request corresponding to the path and the method declared
+This route above provide ACME\Controller\Error for a request corresponding to the path and the method declared
 
 ## Dispatcher Usage
 
