@@ -1,9 +1,11 @@
 {
     "name": "seeren/router",
-    "description": "Route controller",
+    "description": "Route http request to controller",
     "keywords": [
-	    "router",
-	    "dispatcher"],
+	    "route",
+	    "http",
+	    "request"
+	],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -15,7 +17,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-      "php": ">=7.0.1",
+      "php" : ">=7.2.0",,
+      "seeren/container": "dev-master",
       "seeren/controller": "dev-master",
       "seeren/http": "dev-master"
     },
@@ -30,8 +33,7 @@
 		}
 	},
 	"require-dev" : {
-        "seeren/container": "dev-master",
-		"phpunit/phpunit" : "dev-master",
-		"satooshi/php-coveralls" : "dev-master"
+		"phpunit/phpunit" : "7.0.2",
+		"satooshi/php-coveralls" : "2.0.0"
 	}
 }
