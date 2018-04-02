@@ -17,7 +17,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-      "php" : ">=7.2.0",,
+      "php" : ">=7.2.0",
       "seeren/container": "dev-master",
       "seeren/controller": "dev-master",
       "seeren/http": "dev-master"
