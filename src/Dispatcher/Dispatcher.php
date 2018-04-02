@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Dispatcher\Dispatcher class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -35,15 +34,12 @@ class Dispatcher implements DispatcherInterface
 
    protected
        /**
-        * @var ServerRequestInterface http server request
+        * @var ServerRequestInterface
         */
        $request;
 
    /**
-    * Construct Dispatcher
-    * 
     * @param ServerRequestInterface $request http server request
-    * @return null
     */
    public function __construct(ServerRequestInterface $request)
    {
@@ -51,14 +47,8 @@ class Dispatcher implements DispatcherInterface
    }
 
    /**
-    * Dispatch route
-    * 
-    * @param ContainerInterface $container container
-    * @param RouterInterface $router route handler
-    * @return ControllerInterface controller
-    * 
-    * @throws RouterException no route matching
-    * @throws DispatcherException dispatching error
+    * {@inheritDoc}
+    * @see \Seeren\Router\Dispatcher\DispatcherInterface::dispatch()
     */
    public final function dispatch(
        ContainerInterface $container,

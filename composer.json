@@ -1,32 +1,30 @@
 {
-    "name": "seeren/router",
-    "description": "Route http request to controller",
-    "keywords": [
-	    "route",
-	    "http",
-	    "request"
+	"name" : "seeren/router",
+	"description" : "Route http request to controller",
+	"keywords" : [
+		"route",
+		"http",
+		"request"
 	],
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-      {
-        "name": "Cyril Ichti",
-        "email": "consultant@seeren.fr",
-        "homepage" : "http://www.seeren.fr"
-      }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-      "php" : ">=7.2.0",
-      "seeren/container": "dev-master",
-      "seeren/controller": "dev-master",
-      "seeren/http": "dev-master"
-    },
-    "autoload": {
-      "psr-4": {
-		"Seeren\\Router\\": "src/"
-      }
-    },
+	"type" : "library",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Cyril Ichti",
+			"email" : "consultant@seeren.fr",
+			"homepage" : "http://www.seeren.fr"
+		}
+	],
+	"minimum-stability" : "dev",
+	"require" : {
+		"php" : ">=7.2.0",
+ 		"psr/container" : "1.0.0",
+		"seeren/controller" : "dev-master"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Seeren\\Router\\" : "src/"
+		}
+	},
 	"autoload-dev" : {
 		"psr-4" : {
 			"Seeren\\Router\\Test\\" : "test/"

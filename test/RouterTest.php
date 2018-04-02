@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\RouterTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -33,9 +32,8 @@ class RouterTest extends AbstractRouterTest
 {
 
    /**
-    * Get RouterInterface
-    * 
-    * @return RouterInterface router
+    * {@inheritDoc}
+    * @see \Seeren\Router\Test\AbstractRouterTest::getRouter()
     */
     protected function getRouter(): RouterInterface
     {
@@ -51,7 +49,6 @@ class RouterTest extends AbstractRouterTest
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::clone
      * @covers \Seeren\Router\Route\Route::setAction
@@ -70,7 +67,6 @@ class RouterTest extends AbstractRouterTest
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::clone
      * @covers \Seeren\Router\Route\Route::setAction
@@ -87,7 +83,6 @@ class RouterTest extends AbstractRouterTest
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::clone
      * @covers \Seeren\Router\Route\Route::setAction
@@ -107,7 +102,6 @@ class RouterTest extends AbstractRouterTest
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::clone
      * @covers \Seeren\Router\Route\Route::setAction
@@ -127,7 +121,6 @@ class RouterTest extends AbstractRouterTest
     /**
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Router::import
      * @expectedException InvalidArgumentException
@@ -141,7 +134,6 @@ class RouterTest extends AbstractRouterTest
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Matcher\Matcher::match
      * @covers \Seeren\Router\Matcher\Matcher::matchAction
      * @covers \Seeren\Router\Matcher\Matcher::matchPath
@@ -168,7 +160,6 @@ class RouterTest extends AbstractRouterTest
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Exception\RouterException::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Router::match
      * @expectedException \Seeren\Router\Exception\RouterException

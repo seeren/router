@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Factory\RouteFactoryInterface interface
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -37,7 +36,7 @@ interface RouteFactoryInterface
     * @param string $path path
     * @return RouteInterface route
     *
-    * @throws InvalidArgumentException on setter exception
+    * @throws \InvalidArgumentException on setter exception
     */
    public function create(
        string $action,

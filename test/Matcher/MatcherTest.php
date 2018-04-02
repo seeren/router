@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\Matcher\MatcherTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -30,9 +29,8 @@ class MatcherTest extends AbstractMatcherTest
 {
 
    /**
-    * Get MatcherInterface
-    * 
-    * @return MatcherInterface matcher
+    * {@inheritDoc}
+    * @see \Seeren\Router\Test\Matcher\AbstractMatcherTest::getMatcher()
     */
     protected function getMatcher(): MatcherInterface
     {
@@ -40,7 +38,6 @@ class MatcherTest extends AbstractMatcherTest
     }
 
     /**
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Matcher\Matcher::match
      * @covers \Seeren\Router\Matcher\Matcher::matchAction
      * @covers \Seeren\Router\Matcher\Matcher::matchPath
@@ -58,7 +55,6 @@ class MatcherTest extends AbstractMatcherTest
     }
 
     /**
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Matcher\Matcher::matchAction
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::getAction
@@ -70,7 +66,6 @@ class MatcherTest extends AbstractMatcherTest
     }
 
     /**
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Matcher\Matcher::matchPath
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::getParam

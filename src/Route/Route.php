@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Route interface
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.5
  */
@@ -28,31 +27,34 @@ class Route implements RouteInterface
 {
 
    protected
+
        /**
-        * @var string action
+        * @var string
         */
        $action,
+
        /**
-        * @var string prefix name
+        * @var string
         */
        $prefix,
+
        /**
-        * @var string controller name
+        * @var string
         */
        $controller,
+
        /**
-        * @var array parameters expression
+        * @var array
         */
        $param,
+
        /**
-        * @var string UriInterface path
+        * @var string
         */
        $path;
 
    /**
-    * Construct Route
-    * 
-    * @return null
+    * @constructor
     */
    public function __construct()
    {
@@ -61,10 +63,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Get an instance
-    *
-    * @return PrototypeInterface instance
-    *
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::clone()
     */
    public final function clone(): RouteInterface
    {
@@ -72,9 +72,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Get action
-    *
-    * @return string action
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::getAction()
     */
     public final function getAction(): string
    {
@@ -82,10 +81,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Set action
-    *
-    * @param string $action action
-    * @return string action
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::setAction()
     */
    public function setAction(string $action): RouteInterface
    {
@@ -94,9 +91,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Get prefix
-    * 
-    * @return string prefix
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::getPrefix()
     */
    public final function getPrefix(): string
     {
@@ -104,12 +100,8 @@ class Route implements RouteInterface
     }
 
    /**
-    * Set prefix
-    *
-    * @param string $prefix prefix
-    * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException for invalid prefix
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::setPrefix()
     */
    public function setPrefix(string $prefix): RouteInterface
     {
@@ -124,9 +116,8 @@ class Route implements RouteInterface
     }
 
    /**
-    * Get controller
-    * 
-    * @return string controller
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::getController()
     */
    public final function getController(): string
    {
@@ -134,12 +125,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Set controller
-    *
-    * @param string $controller controller
-    * @return string controller
-    * 
-    * @throws InvalidArgumentException for invalid controller
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::setController()
     */
    public function setController(string $controller): RouteInterface
    {
@@ -155,9 +142,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Get param
-    * 
-    * @return string param
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::getParam()
     */
    public final function getParam(): array
    {
@@ -165,10 +151,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Set param
-    *
-    * @param array $param param
-    * @return string param
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::setParam()
     */
    public function setParam(array $param): RouteInterface
    {
@@ -177,9 +161,8 @@ class Route implements RouteInterface
    }
 
    /**
-    * Get path
-    *
-    * @return string path
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::getPath()
     */
    public final function getPath(): string
    {
@@ -187,12 +170,8 @@ class Route implements RouteInterface
    }
     
    /**
-    * Set path
-    *
-    * @param string $path path
-    * @return RouteInterface route
-    *
-    * @throws InvalidArgumentException for invalid path
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::setPath()
     */
    public function setPath(string $path): RouteInterface
    {
@@ -206,19 +185,17 @@ class Route implements RouteInterface
     }
 
    /**
-    * To string
-    *
-    * @return string route to string
+    * {@inheritDoc}
+    * @see \Seeren\Router\Route\RouteInterface::__toString()
     */
    public function __toString(): string
    {
        return str_replace(
            "/",
            "\\",
-           $this->prefix
-         . "\\"
-         . ucfirst(self::CONTROLLER)
-         . "\\" . $this->controller);
+           $this->prefix . "\\"
+         . ucfirst(self::CONTROLLER) . "\\" . $this->controller
+       );
    }
 
 }

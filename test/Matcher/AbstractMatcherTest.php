@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\Matcher\AbstractMatcherTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -44,9 +43,7 @@ abstract class AbstractMatcherTest extends \PHPUnit\Framework\TestCase
    abstract protected function getMatcher(): MatcherInterface;
 
     /**
-     * Get ServerRequestInterface
-     *
-     * @return ServerRequestInterface request
+     * @return ServerRequestInterface
      */
     protected function getServerRequest(): ServerRequestInterface
     {
@@ -61,9 +58,7 @@ abstract class AbstractMatcherTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Get RouteInterface
-     *
-     * @return RouteInterface route
+     * @return RouteInterface
      */
     protected function getRoute(): RouteInterface
     {

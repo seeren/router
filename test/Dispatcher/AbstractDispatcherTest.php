@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\Dispatcher\AbstractDispatcherTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -18,7 +17,6 @@ namespace Seeren\Router\Test\Dispatcher;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Container\ContainerInterface;
 use Seeren\Router\Dispatcher\DispatcherInterface;
-use Seeren\Router\Dispatcher\Dispatcher;
 use Seeren\Http\Request\ServerRequest;
 use Seeren\Http\Stream\ServerRequestStream;
 use Seeren\Http\Uri\ServerRequestUri;
@@ -53,9 +51,7 @@ abstract class AbstractDispatcherTest extends \PHPUnit\Framework\TestCase
    abstract protected function getDispatcher(): DispatcherInterface;
 
    /**
-    * Get RouterInterface
-    *
-    * @return RouterInterface router
+    * @return RouterInterface
     */
    protected function getRouter(): RouterInterface
    {
@@ -68,9 +64,7 @@ abstract class AbstractDispatcherTest extends \PHPUnit\Framework\TestCase
    }
 
    /**
-    * Get ServerRequestInterface
-    *
-    * @return ServerRequestInterface request
+    * @return ServerRequestInterface
     */
    protected function getServerRequest(): ServerRequestInterface
    {
@@ -84,9 +78,7 @@ abstract class AbstractDispatcherTest extends \PHPUnit\Framework\TestCase
    }
 
    /**
-    * Get Container
-    *
-    * @return ContainerInterface container
+    * @return ContainerInterface
     */
    protected function getContainer(): ContainerInterface
    {

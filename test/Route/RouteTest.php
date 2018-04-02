@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\Route\RouteTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -30,9 +29,8 @@ class RouteTest extends AbstractRouteTest
 {
 
    /**
-    * Get RouteInterface
-    * 
-    * @return RouteInterface route
+    * {@inheritDoc}
+    * @see \Seeren\Router\Test\Route\AbstractRouteTest::getRoute()
     */
     protected function getRoute(): RouteInterface
     {

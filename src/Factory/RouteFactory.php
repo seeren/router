@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Factory\RouteFactory class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.2
  */
@@ -29,16 +28,14 @@ class RouteFactory implements RouteFactoryInterface
 {
 
    protected
+
        /**
-        * @var RouteInterface route
+        * @var RouteInterface
         */
        $proto;
 
    /**
-    * Construct Route
-    * 
     * @param RouteInterface $proto route
-    * @return null
     */
    public function __construct(RouteInterface $proto)
    {
@@ -46,16 +43,8 @@ class RouteFactory implements RouteFactoryInterface
    }
 
    /**
-    * Create route
-    * 
-    * @param string $action action
-    * @param string $prefix prefix name
-    * @param string $controller controller name
-    * @param array $param expression
-    * @param string $path path
-    * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException on setter exception
+    * {@inheritDoc}
+    * @see \Seeren\Router\Factory\RouteFactoryInterface::create()
     */
    public function create(
        string $action,

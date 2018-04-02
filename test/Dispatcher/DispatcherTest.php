@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\Dispatcher\DispatcherTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -30,9 +29,8 @@ class DispatcherTest extends AbstractDispatcherTest
 {
 
    /**
-    * Get DispatcherInterface
-    * 
-    * @return DispatcherInterface dispatcher
+    * {@inheritDoc}
+    * @see \Seeren\Router\Test\Dispatcher\AbstractDispatcherTest::getDispatcher()
     */
     protected function getDispatcher(): DispatcherInterface
     {
@@ -47,7 +45,6 @@ class DispatcherTest extends AbstractDispatcherTest
      * @covers \Seeren\Router\Dispatcher\Dispatcher::dispatch
      * @covers \Seeren\Router\Exception\RouterException::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Router::__construct
      * @covers \Seeren\Router\Router::match
@@ -64,7 +61,6 @@ class DispatcherTest extends AbstractDispatcherTest
      * @covers \Seeren\Router\Exception\DispatcherException::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Matcher\Matcher::match
      * @covers \Seeren\Router\Matcher\Matcher::matchAction
      * @covers \Seeren\Router\Matcher\Matcher::matchPath
@@ -95,7 +91,6 @@ class DispatcherTest extends AbstractDispatcherTest
      * @covers \Seeren\Router\Dispatcher\Dispatcher::dispatch
      * @covers \Seeren\Router\Factory\RouteFactory::__construct
      * @covers \Seeren\Router\Factory\RouteFactory::create
-     * @covers \Seeren\Router\Matcher\Matcher::__construct
      * @covers \Seeren\Router\Matcher\Matcher::match
      * @covers \Seeren\Router\Matcher\Matcher::matchAction
      * @covers \Seeren\Router\Matcher\Matcher::matchPath

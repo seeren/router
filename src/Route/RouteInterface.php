@@ -1,23 +1,21 @@
 <?php
 
 /**
- * This file contain Seeren\Router\RouteInterface interface
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.2
  */
-
 namespace Seeren\Router\Route;
 
 /**
  * Interface for represente a route
- * 
+ *
  * @category Seeren
  * @package Router
  * @subpackage Route
@@ -25,122 +23,126 @@ namespace Seeren\Router\Route;
 interface RouteInterface
 {
 
-   const
-       /**
-        * @var string attribute name
-        */
-       ACTION     = "action",
-       /**
-        * @var string attribute name
-        */
-       PREFIX     = "prefix",
-       /**
-        * @var string attribute name
-        */
-       CONTROLLER = "controller",
-       /**
-        * @var string attribute name
-        */
-       PARAM      = "param",
-       /**
-        * @var string attribute name
-        */
-       PATH       = "path";
+    const
 
-   /**
-    * Get instance
-    *
-    * @return RouteInterface instance
-    *
-    */
-   public function clone(): RouteInterface;
+        /**
+         * @var string
+         */
+        ACTION = "action",
+        
+        /**
+         * @var string
+         */
+        PREFIX = "prefix",
+        
+        /**
+         * @var string
+         */
+        CONTROLLER = "controller", /**
+    
+        /**
+         * @var string
+         */
+        PARAM = "param", /**
+    
+        /**
+         * @var string
+         */
+        PATH = "path";
 
-   /**
-    * Get action
-    * 
-    * @return string action
-    */
-   public function getAction(): string;
+    /**
+     * Get instance
+     *
+     * @return RouteInterface instance     
+     */
+    public function clone(): RouteInterface;
 
-   /**
-    * Set action
-    *
-    * @param string $action action
-    * @return RouteInterface route
-    */
-   public function setAction(string $action): RouteInterface;
+    /**
+     * Get action
+     *
+     * @return string action
+     */
+    public function getAction(): string;
 
-   /**
-    * Get prefix
-    * 
-    * @return string prefix
-    */
-   public function getPrefix(): string;
+    /**
+     * Set action
+     *
+     * @param string $action
+     * @return RouteInterface
+     */
+    public function setAction(string $action): RouteInterface;
 
-   /**
-    * Set prefix
-    *
-    * @param string $prefix prefix
-    * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException for invalid prefix
-    */
-   public function setPrefix(string $prefix): RouteInterface;
+    /**
+     * Get prefix
+     *
+     * @return string prefix
+     */
+    public function getPrefix(): string;
 
-   /**
-    * Get controller
-    * 
-    * @return string controller
-    */
-   public function getController(): string;
+    /**
+     * Set prefix
+     *
+     * @param string $prefix
+     * @return RouteInterface
+     *        
+     * @throws \InvalidArgumentException for invalid prefix
+     */
+    public function setPrefix(string $prefix): RouteInterface;
 
-   /**
-    * Set controller
-    *
-    * @param string $controller controller
-    * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException for invalid controller
-    */
-   public function setController(string $controller): RouteInterface;
+    /**
+     * Get controller
+     *
+     * @return string controller
+     */
+    public function getController(): string;
 
-   /**
-    * Get param
-    * 
-    * @return string param
-    */
-   public function getParam(): array;
+    /**
+     * Set controller
+     *
+     * @param string $controller
+     * @return RouteInterface
+     *        
+     * @throws \InvalidArgumentException for invalid controller
+     */
+    public function setController(string $controller): RouteInterface;
 
-   /**
-    * Set param
-    *
-    * @param array $param param
-    * @return RouteInterface route
-    */
-   public function setParam(array $param): RouteInterface;
+    /**
+     * Get param
+     *
+     * @return string param
+     */
+    public function getParam(): array;
 
-   /**
-    * Get path
-    *
-    * @return string path
-    */
-   public function getPath(): string;
+    /**
+     * Set param
+     *
+     * @param array $param
+     * @return RouteInterface
+     */
+    public function setParam(array $param): RouteInterface;
 
-   /**
-    * Set path
-    *
-    * @param string $path path
-    * @return RouteInterface route
-    *
-    * @throws InvalidArgumentException for invalid path
-    */
-   public function setPath(string $path): RouteInterface;
+    /**
+     * Get path
+     *
+     * @return string path
+     */
+    public function getPath(): string;
 
-   /**
-    * To string
-    * 
-    * @return string namespace
-    */
-   public function __toString(): string;
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return RouteInterface
+     *        
+     * @throws \InvalidArgumentException for invalid path
+     */
+    public function setPath(string $path): RouteInterface;
+
+    /**
+     * To string
+     *
+     * @return string namespace
+     */
+    public function __toString(): string;
 
 }

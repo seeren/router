@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\AbstractRouterTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -44,9 +43,8 @@ abstract class AbstractRouterTest extends AbstractFactoryTest
    abstract protected function getRouter(): RouterInterface;
 
    /**
-    * Get RouteFactoryInterface
-    *
-    * @return RouteFactoryInterface route factory
+    * {@inheritDoc}
+    * @see \Seeren\Router\Test\Factory\AbstractFactoryTest::getRouteFactory()
     */
    protected function getRouteFactory(): RouteFactoryInterface
    {
@@ -54,9 +52,7 @@ abstract class AbstractRouterTest extends AbstractFactoryTest
    }
 
    /**
-    * Get ServerRequestInterface
-    *
-    * @return ServerRequestInterface request
+    * @return ServerRequestInterface
     */
    protected function getServerRequest(): ServerRequestInterface
    {

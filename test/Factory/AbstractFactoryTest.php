@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Test\Factory\AbstractFactoryTest class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.1
  */
@@ -16,7 +15,6 @@
 namespace Seeren\Router\Test\Factory;
 
 use Seeren\Router\Route\RouteInterface;
-use Seeren\Router\Factory\RouteFactory;
 use Seeren\Router\Factory\RouteFactoryInterface;
 
 /**

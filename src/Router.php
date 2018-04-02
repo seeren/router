@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Router class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 1.0.7
  */
@@ -33,26 +32,25 @@ class Router implements RouterInterface
 {
 
    protected
+
        /**
-        * @var RouteFactoryInterface factory
+        * @var RouteFactoryInterface
         */
        $factory,
+
        /**
-        * @var MatcherInterface matcher
+        * @var MatcherInterface
         */
        $matcher,
+
        /**
-        * @var array RouteInterface collection
+        * @var array RouteInterface
         */
        $route;
 
     /**
-     * 
-     * Construct Router
-     * 
-     * @param RouteFactoryInterface $factory route factory
-     * @param MatcherInterface $matcher matcher
-     * @return null
+     * @param RouteFactoryInterface $factory
+     * @param MatcherInterface $matcher
      * 
      * @throws InvalidArgumentException for bad configuration
      */
@@ -66,16 +64,8 @@ class Router implements RouterInterface
     }
 
    /**
-    * Create route
-    * 
-    * @param string $action action
-    * @param string $prefix prefix name
-    * @param string $controller controller name
-    * @param array $param expression
-    * @param string $path path
-    * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException on setter exception
+    * {@inheritDoc}
+    * @see \Seeren\Router\Factory\RouteFactoryInterface::create()
     */
    public function create(
        string $action,
@@ -97,10 +87,8 @@ class Router implements RouterInterface
    }
 
    /**
-    * Add route for
-    *
-    * @param Route $route route
-    * @return RouterInterface router
+    * {@inheritDoc}
+    * @see \Seeren\Router\RouterInterface::add()
     */
    public final function add(RouteInterface $route): RouterInterface
    {
@@ -109,12 +97,8 @@ class Router implements RouterInterface
    }
 
    /**
-    * Match route
-    *
-    * @param ServerRequestInterface $request http request
-    * @return RouteInterface route
-    * 
-    * @throws RouterException on failure
+    * {@inheritDoc}
+    * @see \Seeren\Router\RouterInterface::match()
     */
    public final function match(ServerRequestInterface &$request): RouteInterface
    {
@@ -130,12 +114,8 @@ class Router implements RouterInterface
    }
 
    /**
-    * Import JSON file configuration
-    *
-    * @param string $fileName file name
-    * @return RouteInterface route
-    * 
-    * @throws InvalidArgumentException on faillure
+    * {@inheritDoc}
+    * @see \Seeren\Router\RouterInterface::import()
     */
    public final function import(string $fileName): RouterInterface
    {
@@ -151,8 +131,9 @@ class Router implements RouterInterface
            }
            return $this;
        }
-        throw new InvalidArgumentException(
-            "Can't import: invalid \"" . $fileName . "\"");
+       throw new InvalidArgumentException(
+          "Can't import: invalid \"" . $fileName . "\""
+       );
    }
 
 }
