@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file contain Seeren\Router\Matcher\Matcher class
  *     __
  *    / /__ __ __ __ __ __
  *   / // // // // // // /
  *  /_// // // // // // /
  *    /_//_//_//_//_//_/
  *
- * @copyright (c) Cyril Ichti <consultant@seeren.fr>
+ * @author (c) Cyril Ichti <consultant@seeren.fr>
  * @link https://github.com/seeren/router
  * @version 2.0.1
  */
@@ -30,20 +29,8 @@ class Matcher implements MatcherInterface
 {
 
    /**
-    * Construct Matcher
-    * 
-    * @return null
-    */
-   public function __construct()
-   {
-   }
-
-   /**
-    * Match route
-    * 
-    * @param ServerRequestInterface $request http request
-    * @param RouteInterface $route route
-    * @return bool route match or not
+    * {@inheritDoc}
+    * @see \Seeren\Router\Matcher\MatcherInterface::match()
     */
    public function match(
        ServerRequestInterface &$request,
@@ -58,8 +45,6 @@ class Matcher implements MatcherInterface
    }
 
   /**
-   * Match action
-   *
    * @param ServerRequestInterface $request request
    * @param RouteInterface $route route
    * @return bool route action match or not
@@ -80,8 +65,6 @@ class Matcher implements MatcherInterface
    }
 
    /**
-    * Match route path
-    *
     * @param ServerRequestInterface $request request
     * @param RouteInterface $route route
     * @return bool route path match or not
@@ -90,7 +73,10 @@ class Matcher implements MatcherInterface
        ServerRequestInterface &$request,
        RouteInterface $route): bool
    {
-      $requestPath = explode("/", $request->getUri()->getPath());
+      $path = explode("public/", $request->getUri());
+      $requestPath = explode(
+          "/", !array_key_exists(1, $path) ? $request->getUri()->getPath() : $path[1]
+      );
       $routePath = explode("/", $route->getPath());
       if (count($routePath) !== count($requestPath)) {
         return false;
