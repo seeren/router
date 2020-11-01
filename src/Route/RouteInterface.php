@@ -39,11 +39,11 @@ interface RouteInterface
     /**
      * @return array
      */
-    public function getSlugs(): array;
+    public function getMatches(): array;
 
     /**
      * @param array $slugs
      */
-    public function setSlugs(array $slugs): void;
+    public function setMatches(array $slugs): void;
 
 }

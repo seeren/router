@@ -41,7 +41,7 @@ class Route implements RouteInterface
     /**
      * @var array
      */
-    private array $slugs;
+    private array $matches;
 
     /**
      * @param string $path
@@ -55,13 +55,21 @@ class Route implements RouteInterface
         string $methods)
     {
         $controllerInfo = explode('::', $action);
-        if (2 !== count($controllerInfo)) {
-            throw new InvalidArgumentException('Invalid route action "' . $action . '"');
-        }
         $this->controller = $controllerInfo[0];
         $this->action = $controllerInfo[1];
         $this->path = $path;
-        $this->methods = explode(',', $methods);
+        $this->methods = explode(',', strtoupper($methods));
+        foreach ($this->methods as &$value) {
+            $value = trim($value);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
     }
 
     /**
@@ -91,22 +99,14 @@ class Route implements RouteInterface
     /**
      * @return array
      */
-    public function getSlugs(): array
+    public function getMatches(): array
     {
-        return $this->slugs;
+        return $this->matches;
     }
 
-    /**
-     * @return string
-     */
-    public function getPath(): string
+    public function setMatches(array $matches): void
     {
-        return $this->path;
-    }
-
-    public function setSlugs(array $slugs): void
-    {
-        $this->slugs = $slugs;
+        $this->matches = $matches;
     }
 
 }
