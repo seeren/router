@@ -1,0 +1,7 @@
+[
+  {
+    "path": "/qux",
+    "controller": "Seeren\\Router\\Test\\Mock\\Controller\\FooController::showAll",
+    "methods": "get"
+  }
+]

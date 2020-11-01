@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/foo",
+    "controller": "Seeren\\Router\\Test\\Mock\\Controller\\FooController::showAll"
+  },
+  {
+    "path": "/foo/([0-9]{1,3})",
+    "controller": "Seeren\\Router\\Test\\Mock\\Controller\\FooController::show"
+  },
+  {
+    "path": "/bar",
+    "controller": "Seeren\\Router\\Test\\Mock\\Controller\\BarController::showAll"
+  }
+]
