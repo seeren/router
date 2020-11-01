@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/seeren/router.svg?branch=master)](https://travis-ci.org/seeren/router) [![Coverage Status](https://coveralls.io/repos/github/seeren/router/badge.svg?branch=master)](https://coveralls.io/github/seeren/router?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/router.svg)](https://packagist.org/packages/seeren/router/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/router?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/router&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/router.svg)](https://packagist.org/packages/seeren/router#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
 
-Route controller action to http messages
+Route http requests to controller actions
 
 ___
 
