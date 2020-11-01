@@ -79,7 +79,11 @@ class RouterTest extends TestCase
      * @covers \Seeren\Router\Matcher\Matcher::match
      * @covers \Seeren\Router\Router::getResponse
      * @covers \Seeren\Router\Route\Route::__construct
+     * @covers \Seeren\Router\Route\Route::getAction
+     * @covers \Seeren\Router\Route\Route::getController
+     * @covers \Seeren\Router\Route\Route::getMatches
      * @covers \Seeren\Router\Route\Route::getMethods
+     * @covers \Seeren\Router\Route\Route::setMatches
      * @throws MethodException
      * @throws RouteException
      * @throws Throwable
