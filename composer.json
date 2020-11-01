@@ -19,7 +19,8 @@
   "require": {
     "php": ">=7.4",
     "seeren/container": "~2.0",
-    "seeren/controller": "~4.1"
+    "seeren/controller": "~4.1",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
