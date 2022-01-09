@@ -16,13 +16,9 @@ require __DIR__ . '/context.php';
 class RouterTest extends TestCase
 {
 
-    /**
-     * @param string|null $includePath
-     * @return RouterInterface
-     */
     public function getMock(string $includePath = null): RouterInterface
     {
-        $includePath = $includePath ?? __DIR__ . '/config';
+        $includePath = $includePath ?? __DIR__;
         return new Router($includePath);
     }
 
@@ -42,9 +38,8 @@ class RouterTest extends TestCase
      * @covers \Seeren\Router\Router::getResponse
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::getMethods
-     * @throws MethodException
-     * @throws RouteException
-     * @throws Throwable
+     * @covers \Seeren\Router\Route\RouteBuilder::buildFromAnnotations
+     * @covers \Seeren\Router\Route\RouteBuilder::buildFromConfigurationFile
      */
     public function testGetResponseNotFound(): void
     {
@@ -61,9 +56,10 @@ class RouterTest extends TestCase
      * @covers \Seeren\Router\Router::getResponse
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::getMethods
-     * @throws NotFoundException
-     * @throws RouteException
-     * @throws Throwable
+     * @covers \Seeren\Router\Route\Route::getPath
+     * @covers \Seeren\Router\Route\Route::setController
+     * @covers \Seeren\Router\Route\RouteBuilder::buildFromAnnotations
+     * @covers \Seeren\Router\Route\RouteBuilder::buildFromConfigurationFile
      */
     public function testGetResponseBadMethod(): void
     {
@@ -84,12 +80,10 @@ class RouterTest extends TestCase
      * @covers \Seeren\Router\Route\Route::getMatches
      * @covers \Seeren\Router\Route\Route::getMethods
      * @covers \Seeren\Router\Route\Route::setMatches
-     * @throws MethodException
-     * @throws RouteException
-     * @throws Throwable
      */
     public function testGetResponse(): void
     {
+        require __DIR__ . '/Mock/Controller/FooController.php';
         $this->expectOutputString('{"id":2}');
         $router = $this->getMock();
         $router->getResponse();

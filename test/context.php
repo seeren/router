@@ -21,7 +21,7 @@ function filter_input(
             return 'GET';
         }
     }
-    return \filter_input($type, $variable_name, $filter, $options);
+    return null;
 }
 
 namespace Seeren\Router\Matcher;

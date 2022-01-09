@@ -3,37 +3,15 @@
 namespace Seeren\Router\Matcher;
 
 use Seeren\Router\Exception\MethodException;
-use Seeren\Router\Exception\RouteException;
-use Seeren\Router\Route\Route;
 use Seeren\Router\Route\RouteInterface;
 
-/**
- * Class to represent a matcher
- *
- *     __
- *    / /__ __ __ __ __ __
- *   / // // // // // // /
- *  /_// // // // // // /
- *    /_//_//_//_//_//_/
- *
- * @package Seeren\Router
- */
 class Matcher implements MatcherInterface
 {
 
-    /**
-     * @var string
-     */
     private string $path;
 
-    /**
-     * @var string
-     */
     private string $method;
 
-    /**
-     * Matcher constructor
-     */
     public function __construct()
     {
         $pathInfo = filter_input(INPUT_SERVER, 'PATH_INFO');
@@ -48,23 +26,11 @@ class Matcher implements MatcherInterface
         )));
     }
 
-    /**
-     * {@inheritDoc}
-     * @see MatcherInterface::match()
-     */
-    public function match(array $route): ?RouteInterface
+    public function match(RouteInterface $route): ?RouteInterface
     {
-        if (!array_key_exists('path', $route) || !array_key_exists('controller', $route)) {
-            throw new RouteException('Route must have a path and a controller');
-        } else if (!strpos($route['controller'], '::')) {
-            throw new RouteException('Invalid route action "' . $route['controller'] . '"');
-        } else if (!array_key_exists('methods', $route)) {
-            $route['methods'] = 'GET';
-        }
-        if (!preg_match('#^' . $route['path'] . '$#', $this->path, $matches)) {
+        if (!preg_match('#^' . $route->getPath() . '$#', $this->path, $matches)) {
             return null;
         }
-        $route = new Route($route['path'], $route['controller'], $route['methods']);
         if (!in_array(strtoupper($this->method), $route->getMethods())) {
             throw new MethodException('Method "' . $this->method . '" not allowed');
         }

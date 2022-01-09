@@ -4,20 +4,17 @@ namespace Seeren\Router\Test\Mock\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Seeren\Controller\JsonController;
-use Seeren\Router\Test\Mock\Service\FooService;
 
 class FooController extends JsonController
 {
 
-    public function showAll(FooService $fooService): ResponseInterface
+    public function showAll(): ResponseInterface
     {
-        unset($fooService);
         return $this->render([]);
     }
 
-    public function show(int $id, FooService $fooService): ResponseInterface
+    public function show(int $id): ResponseInterface
     {
-        unset($fooService);
         return $this->render(['id' => $id]);
     }
 

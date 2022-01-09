@@ -4,26 +4,31 @@ namespace Seeren\Router\Test;
 
 use PHPUnit\Framework\TestCase;
 use Seeren\Router\Route\Route;
-use Seeren\Router\Test\Mock\Controller\FooController;
 
 class RouteTest extends TestCase
 {
 
-    /**
-     * @return Route
-     */
     public function getMock(): Route
     {
-        return new Route('/foo', FooController::class . '::show', 'GET, POST');
+        return new Route('/foo', 'GET, POST');
     }
 
     /**
      * @covers \Seeren\Router\Route\Route::__construct
      * @covers \Seeren\Router\Route\Route::getPath
+     * @covers \Seeren\Router\Route\Route::setController
+     * @covers \Seeren\Router\Route\Route::getController
+     * @covers \Seeren\Router\Route\Route::getAction
      */
-    public function testGetPath():void
+    public function testGetPath(): void
     {
-        $this->assertEquals('/foo', $this->getMock()->getPath());
+        $route = $this->getMock();
+        $route->setController('Foo::action');
+        $this->assertTrue(
+            '/foo' === $route->getPath()
+                && 'Foo' === $route->getController()
+                && 'action' === $route->getAction()
+        );
     }
 
 }
