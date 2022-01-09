@@ -1,10 +1,14 @@
-# Seeren\Router
+# Seeren\\Router
 
-[![Build Status](https://travis-ci.org/seeren/router.svg?branch=master)](https://travis-ci.org/seeren/router) [![Coverage Status](https://coveralls.io/repos/github/seeren/router/badge.svg?branch=master)](https://coveralls.io/github/seeren/router?branch=master) [![Packagist](https://img.shields.io/packagist/dt/seeren/router.svg)](https://packagist.org/packages/seeren/router/stats) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a0463fb5a084be5bda68e4e36d7c7ac)](https://www.codacy.com/app/seeren/router?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=seeren/router&amp;utm_campaign=Badge_Grade) [![Packagist](https://img.shields.io/packagist/v/seeren/router.svg)](https://packagist.org/packages/seeren/router#) [![Packagist](https://img.shields.io/packagist/l/seeren/log.svg)](LICENSE)
+[![Build](https://app.travis-ci.com/seeren/http.svg?branch=master)](https://app.travis-ci.com/seeren/router)
+[![Require](https://poser.pugx.org/seeren/router/require/php)](https://packagist.org/packages/seeren/router)
+[![Coverage](https://coveralls.io/repos/github/seeren/error/badge.svg?branch=master)](https://coveralls.io/github/seeren/router?branch=master)
+[![Download](https://img.shields.io/packagist/dt/seeren/router.svg)](https://packagist.org/packages/seeren/router/stats)
+[![Codacy](https://app.codacy.com/project/badge/Grade/10976d0537c3454e93242cec13bc07fb)](https://www.codacy.com/gh/seeren/router/dashboard?utm_source=github.com&utm_medium=referral&utm_content=seeren/router&utm_campaign=Badge_Grade)
 
 Route http requests to controller actions
 
-___
+* * *
 
 ## Installation
 
@@ -12,7 +16,27 @@ ___
 composer require seeren/router
 ```
 
-## Seeren\Router\Router
+* * *
+
+## Seeren\\Router\\Router
+
+```php
+namespace App\Controller;
+
+use Seeren\Controller\JsonController;
+use Seeren\Router\Route\Route;
+
+class FooController extends JsonController
+{
+
+    #[Route("/path/(\d+)", "GET")]
+    public function show(int $id)
+    {
+        return $this->render([]);
+    }
+
+}
+```
 
 Retrieve `\Psr\Http\Message\ResponseInterface` from a routed controller
 
@@ -23,50 +47,43 @@ $router = new Router();
 $response = $router->getResponse();
 ```
 
-Controllers are resolved using configuration file by default in `/config/routes.json`
+* * *
 
-```json
-[
-  {
-    "path": "/foo",
-    "controller": "App\\Controller\\FooController::showAll"
-  },
-  {
-    "path": "/foo/(\\d+)",
-    "controller": "App\\Controller\\FooController::show"
-  },
-  {
-    "path": "/foo/(\\d+)/edit",
-    "controller": "App\\Controller\\FooController::edit", 
-    "methods": "get, post"
-  }
-]
-```
+## Configuration
+
+Router use container configuration to inject arguments as primitve: <https://github.com/seeren/container#interfaces>
 
 ```bash
 project/
 └─ config/
+   └─ services.json
    └─ routes.json
 ```
 
-Captured matches are passed to controller action that can either use autowire
+_config/services.json_
 
-```php
-namespace App\Controller\Controller;
-
-use Seeren\Controller\JsonController;
-
-class FooController extends JsonController
+```bash
 {
-
-    public function show(int $id, FooService $fooService)
-    {
-        return $this->render([]);
-    }
-
+  "parameters": {},
+  "services": {}
 }
 ```
 
+Controllers are resolved using anotation by default or configuration file. Captured matches are passed to controller action that can either use autowire
+
+_config/routes.json_
+
+```json
+[
+  {
+    "path": "/path/(\\d+)",
+    "controller": "App\\Controller\\FooController::show"
+  }
+]
+```
+
+* * *
+
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT](./LICENSE) License
