@@ -5,6 +5,7 @@
 [![Coverage](https://coveralls.io/repos/github/seeren/error/badge.svg?branch=master)](https://coveralls.io/github/seeren/router?branch=master)
 [![Download](https://img.shields.io/packagist/dt/seeren/router.svg)](https://packagist.org/packages/seeren/router/stats)
 [![Codacy](https://app.codacy.com/project/badge/Grade/10976d0537c3454e93242cec13bc07fb)](https://www.codacy.com/gh/seeren/router/dashboard?utm_source=github.com&utm_medium=referral&utm_content=seeren/router&utm_campaign=Badge_Grade)
+[![Version](https://img.shields.io/packagist/v/seeren/router.svg)](https://packagist.org/packages/seeren/router)
 
 Route http requests to controller actions
 
